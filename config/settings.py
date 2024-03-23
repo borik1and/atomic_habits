@@ -209,9 +209,16 @@ CELERY_TASK_TRACK_STARTED = config('CELERY_TASK_TRACK_STARTED', default='')
 # Максимальное время на выполнение задачи
 CELERY_TASK_TIME_LIMIT = config('CELERY_TASK_TIME_LIMIT', default='')
 
+# CELERY_BEAT_SCHEDULE = {
+#     'task-name': {
+#         'task': 'habit.tasks.check_messages_sending',  # Путь к задаче
+#         'schedule': timedelta(minutes=10),  # Расписание выполнения задачи (например, каждые 10 минут)
+#     },
+# }
+
 CELERY_BEAT_SCHEDULE = {
     'task-name': {
-        'task': 'habit.tasks.check_messages_sending',  # Путь к задаче
-        'schedule': timedelta(minutes=10),  # Расписание выполнения задачи (например, каждые 10 минут)
+        'task': 'habit.tasks.send_message',  # Путь к задаче
+        'schedule': timedelta(minutes=1),  # Расписание выполнения задачи (например, каждые 10 минут)
     },
 }
